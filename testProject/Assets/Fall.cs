@@ -12,9 +12,9 @@ public class Fall : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (transform.position.y < -10) 
-				{
-				transform.position = startPosition;
-				}
+		if(transform.position.y < -10)
+		{
+			transform.position = startPosition;
+		}
 	}
 }
