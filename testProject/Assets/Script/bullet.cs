@@ -5,7 +5,7 @@ using System.Collections;
 public class Bullet : MonoBehaviour {
 
 	public float speed = 100;
-
+	public float damage = 1;
 	// Use this for initialization
 	void Start () {
 		rigidbody.velocity = transform.forward * speed;
