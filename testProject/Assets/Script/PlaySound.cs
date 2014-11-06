@@ -21,7 +21,8 @@ public class PlaySound : MonoBehaviour
 	
 	void Update()
 	{
-		if (Input.GetButtonDown(buttonPress) && !loop || !played)
+		if (buttonPress != null && buttonPress.Length > 0
+		&& Input.GetButtonDown(buttonPress) && !loop || !played)
 		{
 			Play(sound, transform, loop);
 			played = true;
