@@ -8,24 +8,27 @@ public class PlaySound : MonoBehaviour
 {
 	public AudioClip sound;
 	public string buttonPress;
+	public bool loop = false;
+	bool played = false;
 	
 	void Start()
 	{
 		if (buttonPress == null || buttonPress.Length == 0)
 		{
-			Play(sound, transform);
+			Play(sound, transform, loop);
 		}
 	}
 	
 	void Update()
 	{
-		if (Input.GetButtonDown(buttonPress))
+		if (Input.GetButtonDown(buttonPress) && !loop || !played)
 		{
-			Play(sound, transform);
+			Play(sound, transform, loop);
+			played = true;
 		}
 	}
 	
-	public static AudioSource Play(AudioClip ac, Transform emitter)
+	public static AudioSource Play(AudioClip ac, Transform emitter, bool loop)
 	{
 		if (ac == null)
 		{
@@ -34,9 +37,12 @@ public class PlaySound : MonoBehaviour
 		}
 		GameObject go = new GameObject("sound: " + ac.name);
 		AudioSource asrc = go.AddComponent<AudioSource>();
+		asrc.loop = loop;
 		asrc.clip = ac;
 		asrc.Play();
-		Destroy(go, ac.length);
+		if(!loop) {
+			Destroy(go, ac.length);
+		}
 		if (emitter != null)
 		{
 			go.transform.position = emitter.transform.position;
