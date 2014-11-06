@@ -14,7 +14,7 @@ public class diesToBullet : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col) {
-		bullet b = col.gameObject.GetComponent<bullet> ();
+		Bullet b = col.gameObject.GetComponent<Bullet> ();
 		if (b != null) {
 			renderer.material.color = new Color(
 				Random.Range(0,1f),
