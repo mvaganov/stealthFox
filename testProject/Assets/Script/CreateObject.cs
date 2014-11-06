@@ -6,7 +6,7 @@ public class CreateObject : MonoBehaviour {
 	public GameObject whatToCreate;
 	public KeyCode whichKeyCreatesIt = KeyCode.Alpha1;
 	public float distanceInFront = 2;
-	[Tooltip("How many seconds to stick around.\nIf -1, it will not dissapear")]
+	[Tooltip("How many seconds to stick around.\nIf -1, it will not disappear")]
 	public float timeLimit = -1;
 	// Use this for initialization
 	void Start () {
