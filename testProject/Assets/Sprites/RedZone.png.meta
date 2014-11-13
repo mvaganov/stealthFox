@@ -1,7 +1,8 @@
 fileFormatVersion: 2
 guid: 82d6ab7f0f45d4e059dde3b97e60b041
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: RedZone
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
