@@ -18,10 +18,10 @@ public class LightStrobe2 : MonoBehaviour {
 	void Update () {
 		if(timer < duration) {
 			Light light = GetComponent<Light>();
-			if(reversing == false && !doneReversing) {
+			if(reversing == true && !doneReversing) {
 				light.intensity = 
 					totalIntensityChange * timer / duration+ intensityStart;
-			} else if (reversing == true && doneReversing){
+			} else if (reversing == false && doneReversing){
 				light.intensity = 
 					totalIntensityChange * timer / reverseDuration+ intensityStart;
 			} else if (reversing && doneReversing){
