@@ -7,7 +7,11 @@ public class LevelTeleport : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		Collider collider = GetComponent<Collider> ();
+		if(!collider.isTrigger) {
+			Debug.Log(collider+" needs to be set as a trigger!");
+			collider.isTrigger = true;
+		}
 	}
 	
 	// Update is called once per frame
@@ -15,10 +19,14 @@ public class LevelTeleport : MonoBehaviour {
 	
 	}
 
-	void OnTriggerEnter(Collider other) {
-		CharacterController cc = other.gameObject.GetComponent<CharacterController> ();
+	void TeleportIfCharacterController(GameObject other) {
+		CharacterController cc = other.GetComponent<CharacterController> ();
 		if(cc != null) {
 			Application.LoadLevel(levelName);
 		}
+	}
+
+	void OnTriggerEnter(Collider other) {
+		TeleportIfCharacterController (other.gameObject);
 	}
 }
