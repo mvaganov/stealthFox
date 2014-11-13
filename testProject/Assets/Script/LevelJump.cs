@@ -27,5 +27,9 @@ public class LevelJump : MonoBehaviour {
 		{
 			Application.LoadLevel("Allie");
 		}
+		if(Input.GetKeyDown(KeyCode.Y))
+		{
+			Application.LoadLevel("Wattie");
+		}
 	}
 }
