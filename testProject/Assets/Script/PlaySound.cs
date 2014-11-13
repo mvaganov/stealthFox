@@ -10,12 +10,13 @@ public class PlaySound : MonoBehaviour
 	public string buttonPress;
 	public bool loop = false;
 	bool played = false;
+	public float volume = 1;
 	
 	void Start()
 	{
 		if (buttonPress == null || buttonPress.Length == 0)
 		{
-			Play(sound, transform, loop);
+			Play(sound, transform, loop, volume);
 		}
 	}
 	
@@ -24,12 +25,12 @@ public class PlaySound : MonoBehaviour
 		if (buttonPress != null && buttonPress.Length > 0
 		&& Input.GetButtonDown(buttonPress) && !loop || !played)
 		{
-			Play(sound, transform, loop);
+			Play(sound, transform, loop, volume);
 			played = true;
 		}
 	}
 	
-	public static AudioSource Play(AudioClip ac, Transform emitter, bool loop)
+	public static AudioSource Play(AudioClip ac, Transform emitter, bool loop, float volume)
 	{
 		if (ac == null)
 		{
@@ -41,6 +42,7 @@ public class PlaySound : MonoBehaviour
 		asrc.loop = loop;
 		asrc.clip = ac;
 		asrc.Play();
+		asrc.volume = volume;
 		if(!loop) {
 			Destroy(go, ac.length);
 		}
