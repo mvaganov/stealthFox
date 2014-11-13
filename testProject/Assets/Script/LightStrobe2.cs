@@ -18,13 +18,13 @@ public class LightStrobe2 : MonoBehaviour {
 	void Update () {
 		if(timer < duration) {
 			Light light = GetComponent<Light>();
-			if(!reversing && !doneReversing) {
+			if(reversing == true && !doneReversing) {
 				light.intensity = 
 					totalIntensityChange * timer / duration+ intensityStart;
-			} else if (!reversing && doneReversing){
+			} else if (reversing == true && doneReversing){
 				light.intensity = 
 					totalIntensityChange * timer / reverseDuration+ intensityStart;
-			} else if (!reversing && doneReversing){
+			} else if (reversing && doneReversing){
 			light.intensity = 
 				totalIntensityChange * timer / offDuration+ intensityStart;
 			} else {
@@ -35,7 +35,7 @@ public class LightStrobe2 : MonoBehaviour {
 			if(reverseAlso) {
 				duration = Random.Range (0,2);
 				timer = 0;
-				reversing = !reversing;
+				reversing = true;
 				doneReversing = true;
 			}
 		}
